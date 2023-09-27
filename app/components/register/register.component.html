@@ -1,0 +1,48 @@
+<div class="container">
+    <form  [formGroup]="registrationFormGroup" (ngSubmit)="onSubmit()" >
+
+        <h2> User Registeration </h2>
+        <br><br><br>
+
+        <!-- First Name -->
+        <mat-form-field appearence="outline" >
+            <mat-label>firstName</mat-label>
+            <input matInput placeholder="First name" formControlName="firstName">
+            <!-- <div *ngIf="registrationForm.get('firstName').hasError('required')">
+                Username is required.
+              </div> -->
+        </mat-form-field>
+        <!-- LastName -->
+        <mat-form-field appearence="outline" >
+            <mat-label>lastName</mat-label>
+            <input matInput placeholder="Last Name" formControlName="lastName">
+        </mat-form-field>
+        <!-- Email -->
+        <mat-form-field appearence="outline" >
+            <mat-label>emailId</mat-label>
+            <input matInput placeholder="enter your emailId" formControlName="emailId">
+        </mat-form-field>
+      
+        <!-- Dob -->
+            <mat-form-field>
+            <mat-label>Choose a dob</mat-label>
+            <input matInput [matDatepicker]="picker" formControlName="dob">
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+        <!-- </div> -->
+        <!-- Password -->
+        <mat-form-field>
+            <input placeholder="password" matInput [type]="showPassword ? 'text' : 'password'" [(ngModel)]="password" #passwordField formControlName="password">
+            <button mat-icon-button matSuffix (click)="togglePasswordVisibility()">
+              <mat-icon>{{ showPassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+            </button>
+          </mat-form-field>
+          <!-- SUbmit button -->
+          <div class="button">
+          <button  mat-raised-button type="reset"  color="primary" style="margin-right:390px;"routerLink="/login">Cancel</button>
+          <button  mat-raised-button type="submit" [disabled]="registrationFormGroup.invalid" color="primary"  routerLink="/login">Register</button>
+          </div>
+    </form>
+</div>

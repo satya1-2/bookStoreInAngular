@@ -1,0 +1,47 @@
+<app-header></app-header>
+<div class="main-content">
+    <div class="header-content">
+        <div>
+            <b style="font-size: 30px;">Books</b><span> ({{numberOfBooks}}items)</span>
+        </div>
+        <mat-form-field>
+            <mat-label>sort by relavance</mat-label>
+            <mat-select>
+                <mat-option *ngFor="let option of order" [value]="option">
+                    {{option}}
+                </mat-option>
+                
+            </mat-select>
+        </mat-form-field>
+    </div>
+    <div class="cardbody">
+        <div *ngFor="let book of books">
+            <mat-card class="example-card">
+                <mat-card-header class="card-header">
+                    <img mat-card-image src={{book.bookLogo}} alt="Photo of a Shiba Inu" class="image" style="height: 160px; width: 130px;">
+                </mat-card-header>
+                <mat-card-content>
+                    <div><b>{{book.bookName}}</b><br><span style="color: rgba(50, 47, 47, 0.837);">by
+                            {{book.bookAuthor}}</span></div><br>
+                    <div style="font-size: 18px;"> <span>Rs.{{book.bookPrice}}</span> <span style="padding: 10px;">books: {{
+                            book.bookQuantity}}</span> </div>
+                </mat-card-content>
+
+                <mat-card-actions>
+                    <div>
+                        <ng-template #NotAdded>
+                            <button mat-button style="background-color: #3371B5;width:100%" (click)="onClick(book)">Added to Bag</button>
+                        </ng-template>
+                        <ng-container *ngIf="!book.added;else NotAdded">
+                            <div class="btngroup">
+                                <button mat-button style="background-color: #A03037;" (click)="onClick(book)">ADD TO BAG</button>     
+                                <button mat-button style="border-radius: 2px; border-color:black ;">WISHLIST</button>
+                            </div>
+                        </ng-container>
+                </div>
+                    
+                </mat-card-actions>
+            </mat-card>
+        </div>
+    </div>
+</div>

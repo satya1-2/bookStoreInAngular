@@ -1,0 +1,27 @@
+<div class="form">
+    <form class="login" [formGroup]="loginFormGroup" (ngSubmit)="onSubmit()" >
+        <h1>Login</h1>
+        
+        <mat-form-field appearance="fill" >
+            <mat-label>EmailId</mat-label>
+            <input matInput placeholder="enter your email" formControlName="emailId">
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+            
+            <input matInput [type]="showPassword ? 'text' : 'password'" [(ngModel)]="password" #passwordField  placeholder="Password"formControlName="password">
+            <button mat-icon-button matSuffix (click)="togglePasswordVisibility()">
+              <mat-icon>{{ showPassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+            </button>
+          </mat-form-field>̥
+
+        <button mat-flat-button type="submit" color="warn">sign-in</button>
+
+        <div class="actions">
+            <a href="" style="margin-right: 35px;"> forgot password</a>
+
+            <button mat-flat-button color="primary" routerLink="/Register">Register</button>
+        </div>
+    </form>
+</div>
+
